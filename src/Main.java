@@ -39,21 +39,22 @@ class Stopper extends Thread{
 
 class Main extends Thread{
     static DP dp = new DP();
-    static Stopper stopper = new Stopper();
+    static Main stopper = new Main();
+
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Continue?");
+        String choice = sc.next();
+        if(!choice.isEmpty()){
+            dp.interrupt();
+        }
+    }
 
     public static void main(String[] args) {
 
 
-        //stopper.start();
-        //dp.start();
-        char[] trial = "Pooja".toCharArray();
-        for (int i = 0; i < trial.length; i++) {
-            trial[i] = (char)((trial[i]+1)*10);
-        }
-        System.out.println(trial);
-        for (int i = 0; i < trial.length; i++) {
-            trial[i] = (char)((trial[i]-1)/10);
-        }
-        System.out.println(trial+" dfdf");
+        stopper.start();
+        dp.start();
+
     }
 }
